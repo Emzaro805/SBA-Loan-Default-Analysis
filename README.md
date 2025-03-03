@@ -4,7 +4,7 @@
 This project analyzes **U.S. Small Business Administration (SBA) loan data** to predict the likelihood of loan default. The goal is to help banks and policymakers make **informed decisions** when approving SBA-backed loans. Using **descriptive analysis, data visualization, and machine learning models**, we classify loan applications as **"higher risk"** or **"lower risk"** of default.
 
 ## Project Structure
-#SBA-Loan-Default-Prediction
+SBA-Loan-Default-Prediction
 ├── data/               # Raw and cleaned datasets
 │   ├── SBA_loans_raw.xlsx
 │   └── SBA_loans_cleaned.csv
