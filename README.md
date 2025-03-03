@@ -6,9 +6,12 @@ This project analyzes **U.S. Small Business Administration (SBA) loan data** to 
 ## Project Structure
 SBA-Loan-Default-Prediction
 
-├── data/               # Raw and cleaned datasets
+├── data/# Raw and cleaned datasets
+
 │   ├── SBA_loans_raw.xlsx
+
 │   └── SBA_loans_cleaned.csv
+
 ├── scripts/            # R scripts for analysis
 │   ├── data_cleaning.R
 │   ├── exploratory_analysis.R
