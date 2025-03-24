@@ -91,7 +91,7 @@ This project presents a data-driven solution to help U.S. banks assess the risk 
 
 ## 💻 Tools & Libraries
 
-- **R**: `caret`, `ggplot2`, `dplyr`,  `readxl`
+- **R**: `caret`, `ggplot2`, `dplyr`, `e1071`, `readxl`
 - **Techniques**: Data Wrangling, Logistic Regression, K-Nearest Neighbors, Confusion Matrix, Cross-validation
 
 
