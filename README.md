@@ -38,7 +38,10 @@ This project presents a data-driven solution to help U.S. banks assess the risk 
    - Bar graph: New vs Existing businesses
 3. **Default Rates by Loan Documentation**
    - Bar graph: LowDoc (Y/N)
+   ![image](https://github.com/user-attachments/assets/2c326352-4eb8-433c-afcb-05635dbaf305)
+
 4. **Disbursement vs Approval Scatterplot**
+   ![image](https://github.com/user-attachments/assets/32ee14e1-958f-4663-9bbf-148a2d95af20)
    - Colored by loan outcome (Default / Paid)
 
 ## 🔍 Modeling
@@ -63,8 +66,8 @@ This project presents a data-driven solution to help U.S. banks assess the risk 
 
 1. Loans with less documentation (LowDoc) are much riskier.
    - Borrowers who didn’t provide full paperwork defaulted at significantly higher rates.
-   - - Recommendation: Require full documentation to reduce default risk.
-     - 
+   - Recommendation: Require full documentation to reduce default risk.
+       
 2. Longer loan terms increase the risk of default.
    - The more time given to repay, the more uncertainty arises over repayment.
    - Recommendation: Be cautious with long-term loans, especially for high-risk applicants.
