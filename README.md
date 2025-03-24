@@ -64,9 +64,7 @@ This project presents a data-driven solution to help U.S. banks assess the risk 
 - **Validation Accuracy**: **85.6%**
 - **Kappa Score**: 0.435
 
-# ============================================
 # 📌 Key Insights 
-# ============================================
 
 1. Loans with less documentation (LowDoc) are much riskier.
    - Borrowers who didn’t provide full paperwork defaulted at significantly higher rates.
