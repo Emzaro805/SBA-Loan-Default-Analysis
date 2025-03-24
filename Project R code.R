@@ -1,6 +1,8 @@
-#Subset Data so only Relevenat Columns are in the Data
+"Data Wrangling" 
+
+#Subset Data so only Relevant Columns are in the Data
 selected_columns <- c("Name", "Bank", "Term", "NoEmp", "NewExist", "LowDoc", 
-                      "DisbursementGross", "MIS_Status","GrAppv", "SBA_Appv")
+                      "DisbursementGross", "MIS_Status", "GrAppv", "SBA_Appv")
 
 # Create the subset with selected variables
 subset_data <- myData[, selected_columns]
@@ -52,8 +54,7 @@ write.csv(sampleData, "SampleData.csv", row.names = FALSE)
 
 'Determining Variables'
 
-
-#Compare these variable for to understand if certain categorical features affect loan defaults
+#Compare these variables to understand if certain categorical features affect loan defaults
 table(sampleData$NewExist,sampleData$Status )
 table(sampleData$LowDoc, sampleData$Status)
 
@@ -73,22 +74,22 @@ sampleData$pHat <- Logistic_Model$fitted.values
 
 # make a column to predict above 50%
 sampleData$yHat <- ifelse(sampleData$pHat > 0.5, 1, 0)
-# make column to see how accuarcy you were
+# Make a column to see how accurate you were
 sampleData$Accuracy <- ifelse(sampleData$Status == sampleData$yHat, 1, 0)
 # Percentage of accuracy 
 sum(sampleData$Accuracy)/length(sampleData$Accuracy)
 
 
-# Create True Positive Column 
+# Create a True Positive Column 
 sampleData$TP <- ifelse(sampleData$Status == 1 & sampleData$yHat == 1, 1, 0)
-# Create True Negative Column 
+# Create a True Negative Column 
 sampleData$TN <- ifelse(sampleData$Status == 0 &sampleData$yHat == 0, 1, 0)
-# Create False Positive Column 
+# Create a False Positive Column 
 sampleData$FP <- ifelse(sampleData$Status == 0 & sampleData$yHat == 1, 1, 0)
-# Create False Negative Column 
+# Create a False Negative Column 
 sampleData$FN <- ifelse(sampleData$Status == 1 & sampleData$yHat == 0, 1, 0)
 
-# sum the columns
+# Sum the columns
 sum(sampleData$TP)
 sum(sampleData$TN)
 sum(sampleData$FP)
@@ -100,34 +101,58 @@ sum(sampleData$TP) / (sum(sampleData$TP) + sum(sampleData$FN))
 # Specificity
 sum(sampleData$TN) / (sum(sampleData$TN) + sum(sampleData$FP))
 
+# Set variables and subset
 knn_variables <- c("Status",
                    "DisbursementGross", "GrAppv", "Term",
                    "NoEmp", "SBA_Appv") 
 knn_subset <- sampleData[, knn_variables]
 
-#Knn Assessment 
+"KNN Assessment"
+
+# Remove the categorical variable and scale the columns 2-6 and subset
 myData1<- scale(knn_subset[2:6])  
+# Add categorical variable to the end of the table
 myData1<- data.frame(myData1, knn_subset$Status) 
+# Rename column 
 colnames(myData1)[6] <- 'Status'  
+# Factor the variable
 myData1$Status<- as.factor(myData1$Status) 
 
+# Set seed to 1
 set.seed(1) 
+
+# Partion data 60/40
 myIndex<- createDataPartition(myData1$Status, p=0.6, list=FALSE) 
+# 60% of training
 trainSet <- myData1[myIndex,] 
+# 40% for validating
 validationSet <- myData1[-myIndex,]
 
+# Use 10-fold cross-validation
 myCtrl <- trainControl(method="cv", number=10) 
+
+# Tune data for up to 10 k-Nearest Neighbors
 myGrid <- expand.grid(.k=c(1:10)) 
 
+# Set seed to 1 again
 set.seed(1) 
+
+# KNN Model 
 KNN_fit <- train(Status ~ ., data=trainSet, method = "knn", trControl=myCtrl, tuneGrid = myGrid) 
+# Show
 KNN_fit 
 
-KNN_Class <- predict(KNN_fit, newdata = validationSet) # Predict the y-hat values
-confusionMatrix(KNN_Class, validationSet$Status, positive = '1') # Compute the confusion matrix to assess the model performance. Note that the default cut-off value is 0.5
+# Predict the y-hat values
+KNN_Class <- predict(KNN_fit, newdata = validationSet)
 
-KNN_Class_prob <- predict(KNN_fit, newdata = validationSet, type='prob') # Predict the p-hat values
-KNN_Class_prob # Show the p-hat values
+# Compute the confusion matrix to assess the model performance. Note that the default cut-off value is 0.5
+confusionMatrix(KNN_Class, validationSet$Status, positive = '1')
+
+ # Predict the p-hat values
+KNN_Class_prob <- predict(KNN_fit, newdata = validationSet, type='prob') 
+# Show the p-hat values
+KNN_Class_prob 
+# Change the cut-off value from 0.5 to 0.25
 confusionMatrix(as.factor(ifelse(KNN_Class_prob$`1` > 0.25, '1', '0')),
-                validationSet$Status, positive = '1') # Change the cut-off value from 0.5 to 0.25
+                validationSet$Status, positive = '1')
 
