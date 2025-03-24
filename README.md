@@ -61,25 +61,25 @@ This project presents a data-driven solution to help U.S. banks assess the risk 
 # 📌 Key Insights 
 # ============================================
 
-# 1. Loans with less documentation (LowDoc) are much riskier.
-#    - Borrowers who didn’t provide full paperwork defaulted at significantly higher rates.
-#    - Recommendation: Require full documentation to reduce default risk.
+1. Loans with less documentation (LowDoc) are much riskier.
+   - Borrowers who didn’t provide full paperwork defaulted at significantly higher rates.
+   - - Recommendation: Require full documentation to reduce default risk.
+     - 
+2. Longer loan terms increase the risk of default.
+   - The more time given to repay, the more uncertainty arises over repayment.
+   - Recommendation: Be cautious with long-term loans, especially for high-risk applicants.
 
-# 2. Longer loan terms increase the risk of default.
-#    - The more time given to repay, the more uncertainty arises over repayment.
-#    - Recommendation: Be cautious with long-term loans, especially for high-risk applicants.
+3. Bigger businesses (with more employees) were more likely to default in our data.
+- This may reflect overexpansion or weak internal financial controls.
+- Recommendation: Do not assume size equals low risk.
 
-# 3. Bigger businesses (with more employees) were more likely to default in our data.
-#    - This may reflect overexpansion or weak internal financial controls.
-#    - Recommendation: Do not assume size equals low risk.
+4. Our predictive models (Logistic Regression and K-Nearest Neighbors) can predict defaults with over 85% accuracy.
+   - This allows banks to proactively flag high-risk loans before approval.
 
-# 4. Our predictive models (Logistic Regression and K-Nearest Neighbors) can predict defaults with over 85% accuracy.
-#    - This allows banks to proactively flag high-risk loans before approval.
-
-# 5. Strategic Actions for Banks:
-#    - Be stricter with LowDoc loans
-#    - Avoid long-term loans for high-risk businesses
-#    - Use this model to enhance the loan approval process and reduce financial losses
+5. Strategic Actions for Banks:
+   - Be stricter with LowDoc loans
+   - Avoid long-term loans for high-risk businesses
+   - Use this model to enhance the loan approval process and reduce financial losses
 
 
 ## 💻 Tools & Libraries
