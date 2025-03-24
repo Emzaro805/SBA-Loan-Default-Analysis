@@ -38,7 +38,8 @@ This project presents a data-driven solution to help U.S. banks assess the risk 
 
 2. **Default Rates by Business Type**
    - Bar graph: New vs Existing businesses
-   - ![image](https://github.com/user-attachments/assets/3aac922f-658c-487f-a13b-86f63d040b5d)
+   - ![image](https://github.com/user-attachments/assets/cd1481b9-8990-4de7-9a64-b0b043f7320a)
+
 
 3. **Default Rates by Loan Documentation**
    - Bar graph: LowDoc (Y/N)
