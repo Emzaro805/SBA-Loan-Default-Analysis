@@ -13,7 +13,7 @@ This project presents a data-driven solution to help U.S. banks assess the risk 
   - `Term`: Length of the loan
   - `NoEmp`: Number of employees
   - `NewExist`: New (2) or Existing (1) business
-  - `LowDoc`: Participation in LowDoc program (Y/N)
+  - `LowDoc`: Participation in LowDoc program (Less Documentation than Normal Loan) (Y/N)
   - `DisbursementGross`: Disbursed loan amount
   - `MIS_Status`: Loan status (Paid in Full vs Charge Off)
   - `GrAppv`: Gross approved loan amount
@@ -38,6 +38,8 @@ This project presents a data-driven solution to help U.S. banks assess the risk 
 
 2. **Default Rates by Business Type**
    - Bar graph: New vs Existing businesses
+   - ![image](https://github.com/user-attachments/assets/3aac922f-658c-487f-a13b-86f63d040b5d)
+
 3. **Default Rates by Loan Documentation**
    - Bar graph: LowDoc (Y/N)
    - ![image](https://github.com/user-attachments/assets/2c326352-4eb8-433c-afcb-05635dbaf305)
@@ -75,8 +77,8 @@ This project presents a data-driven solution to help U.S. banks assess the risk 
    - Recommendation: Be cautious with long-term loans, especially for high-risk applicants.
 
 3. Bigger businesses (with more employees) were more likely to default in our data.
-- This may reflect overexpansion or weak internal financial controls.
-- Recommendation: Do not assume size equals low risk.
+   - This may reflect overexpansion or weak internal financial controls.
+   - Recommendation: Do not assume size equals low risk.
 
 4. Our predictive models (Logistic Regression and K-Nearest Neighbors) can predict defaults with over 85% accuracy.
    - This allows banks to proactively flag high-risk loans before approval.
