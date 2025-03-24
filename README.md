@@ -1,59 +1,91 @@
-# SBA Loan Default Prediction using R
+# SBA Loan Default Risk Analysis
 
-## Overview
-This project analyzes **U.S. Small Business Administration (SBA) loan data** to predict the likelihood of loan default. The goal is to help banks and policymakers make **informed decisions** when approving SBA-backed loans. Using **descriptive analysis, data visualization, and machine learning models**, we classify loan applications as **"higher risk"** or **"lower risk"** of default.
+## 📊 Overview
 
-## Project Structure
-\SBA-Loan-Default-Prediction
+This project presents a data-driven solution to help U.S. banks assess the risk of small business loan defaults. By analyzing over 25,000 loan records, we identify key variables that contribute to loan repayment outcomes. Our models enable smarter, data-supported loan approvals to reduce financial losses while supporting business growth.
 
-├── data/                # Raw and cleaned datasets
+## 📁 Dataset
 
-│   ├── SBA_loans_raw.xlsx
+- **Source**: The dataset is provided by the **U.S. Small Business Administration (SBA)** and contains **900,000+ historical loan records from 1987 to 2014**. Each observation represents a small business loan and includes: **Loan amount, approval details, job creation, industry classification, loan term, and loan status** (paid in full or defaulted).
 
-│   └── SBA_loans_cleaned.csv
+- **Sample Size**: 5,000 loans (random sample from full dataset for performance optimization)
+- **Key Features Used**:
+  - `Term`: Length of the loan
+  - `NoEmp`: Number of employees
+  - `NewExist`: New (2) or Existing (1) business
+  - `LowDoc`: Participation in LowDoc program (Y/N)
+  - `DisbursementGross`: Disbursed loan amount
+  - `MIS_Status`: Loan status (Paid in Full vs Charge Off)
+  - `GrAppv`: Gross approved loan amount
+  - `SBA_Appv`: SBA-approved guaranteed amount
 
-├── scripts/              # R scripts for analysis
+## 🧹 Data Cleaning & Preparation
 
-│   ├── data_cleaning.R
+- Removed irrelevant columns
+- Handled missing values using `na.omit()`
+- Converted categorical variables to `factor`
+- Created binary target variable `Status`:
+  - `1`: Paid in Full
+  - `0`: Default (ChargeOff)
+- Filtered out ambiguous values in `LowDoc` and `NewExist`
+- Scaled numerical features for the KNN model
 
-│   ├── exploratory_analysis.R
+## 📈 Data Visualizations
 
-│   └── modeling.R
+1. **Loan Approval Amount Distribution**
+   - Histograms to show skewness and upper outliers
+2. **Default Rates by Business Type**
+   - Bar graph: New vs Existing businesses
+3. **Default Rates by Loan Documentation**
+   - Bar graph: LowDoc (Y/N)
+4. **Disbursement vs Approval Scatterplot**
+   - Colored by loan outcome (Default / Paid)
 
-├── reports/              # Findings and insights
+## 🔍 Modeling
 
-│   ├── SBA_Loan_Analysis_Report.Rmd
+### Logistic Regression
+- **Target**: `Status`
+- **Predictors**: DisbursementGross, GrAppv, Term, NoEmp, NewExist, LowDoc, SBA_Appv
+- **Accuracy**: **82%**
+- **Top Predictors**: Term, NoEmp, and LowDoc
 
-│   └── SBA_Loan_Analysis.pdf
+### K-Nearest Neighbors (KNN)
+- **Target**: `Status`
+- **Predictors**: DisbursementGross, GrAppv, Term, NoEmp, SBA_Appv
+- **Optimal K**: 3
+- **Accuracy**: **86.2%**
+- **Validation Accuracy**: **85.6%**
+- **Kappa Score**: 0.435
 
-├── README.md           # Project overview
+# ============================================
+# 📌 Key Insights 
+# ============================================
 
-├── .gitignore          # Ignore unnecessary files (e.g., .Rhistory, .DS_Store)
+# 1. Loans with less documentation (LowDoc) are much riskier.
+#    - Borrowers who didn’t provide full paperwork defaulted at significantly higher rates.
+#    - Recommendation: Require full documentation to reduce default risk.
 
-├── LICENSE             # Open-source license
+# 2. Longer loan terms increase the risk of default.
+#    - The more time given to repay, the more uncertainty arises over repayment.
+#    - Recommendation: Be cautious with long-term loans, especially for high-risk applicants.
 
-└── requirements.txt    # List of R packages used
+# 3. Bigger businesses (with more employees) were more likely to default in our data.
+#    - This may reflect overexpansion or weak internal financial controls.
+#    - Recommendation: Do not assume size equals low risk.
 
-## Project Goals
-- **Identify key factors** influencing SBA loan defaults.
-- **Apply Logistic Regression and k-Nearest Neighbors (kNN)** models for classification.
-- **Provide insights** using data visualization and exploratory data analysis (EDA).
-- **Deliver a business-oriented report** with actionable recommendations.
+# 4. Our predictive models (Logistic Regression and K-Nearest Neighbors) can predict defaults with over 85% accuracy.
+#    - This allows banks to proactively flag high-risk loans before approval.
 
-## Data Source
-The dataset is provided by the **U.S. Small Business Administration (SBA)** and contains **900,000+ historical loan records from 1987 to 2014**. Each observation represents a small business loan and includes:
-- **Loan amount, approval details, job creation, industry classification, loan term, and loan status** (paid in full or defaulted).
+# 5. Strategic Actions for Banks:
+#    - Be stricter with LowDoc loans
+#    - Avoid long-term loans for high-risk businesses
+#    - Use this model to enhance the loan approval process and reduce financial losses
 
-**Target Variable:** `MIS_Status`
-- **PIF (Paid in Full)** – Loan was successfully paid off.
-- **CHGOFF (Charged Off)** – Loan defaulted.
 
-## Data Preprocessing & Exploratory Analysis
-### Steps performed:
-- **Data Cleaning** – Handling missing values, outliers, and formatting inconsistencies.
-- **Feature Engineering** – Creating new variables to enhance model performance.
-- **Exploratory Data Analysis (EDA)** – Summary statistics, distributions, and correlations.
-- **Data Partitioning** – Splitting the dataset into **training** and **validation** sets.
+## 💻 Tools & Libraries
+
+- **R**: `caret`, `ggplot2`, `dplyr`,  `readxl`
+- **Techniques**: Data Wrangling, Logistic Regression, K-Nearest Neighbors, Confusion Matrix, Cross-validation
 
 
 
