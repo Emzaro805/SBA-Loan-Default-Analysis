@@ -34,16 +34,18 @@ This project presents a data-driven solution to help U.S. banks assess the risk 
 
 1. **Loan Approval Amount Distribution**
    - Histograms to show skewness and upper outliers
+   - ![image](https://github.com/user-attachments/assets/c5c9d3c6-498d-4f25-bb9f-8da1951460d9)
+
 2. **Default Rates by Business Type**
    - Bar graph: New vs Existing businesses
 3. **Default Rates by Loan Documentation**
    - Bar graph: LowDoc (Y/N)
-   ![image](https://github.com/user-attachments/assets/2c326352-4eb8-433c-afcb-05635dbaf305)
+   - ![image](https://github.com/user-attachments/assets/2c326352-4eb8-433c-afcb-05635dbaf305)
 
 4. **Disbursement vs Approval Scatterplot**
-   ![image](https://github.com/user-attachments/assets/32ee14e1-958f-4663-9bbf-148a2d95af20)
    - Colored by loan outcome (Default / Paid)
-
+   - ![image](https://github.com/user-attachments/assets/32ee14e1-958f-4663-9bbf-148a2d95af20)
+   - 
 ## 🔍 Modeling
 
 ### Logistic Regression
