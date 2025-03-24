@@ -1,3 +1,13 @@
+# Load necessary libraries
+library(readxl)
+library(dplyr)
+library(caret)
+library(e1071)
+
+# Load the dataset
+sba_data <- read_excel("C:/Users/emzar/OneDrive - Cal Poly/1_Business Analytics/Term Project/Term project data FULL SET.xlsx")
+
+
 "Data Wrangling" 
 
 #Subset Data so only Relevant Columns are in the Data
