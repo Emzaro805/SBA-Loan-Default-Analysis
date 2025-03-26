@@ -2,7 +2,7 @@
 
 ## 📊 Overview
 
-This project presents a data-driven solution to help U.S. banks assess the risk of small business loan defaults. By analyzing over 25,000 loan records, we identify key variables that contribute to loan repayment outcomes. Our models enable smarter, data-supported loan approvals to reduce financial losses while supporting business growth.
+This project presents a data-driven solution to help U.S. banks assess the risk of small business loan defaults. By analyzing over 900,000 loan records, we identify key variables that contribute to loan repayment outcomes. Our models enable smarter, data-supported loan approvals to reduce financial losses while supporting business growth.
 
 ## 📁 Dataset
 
