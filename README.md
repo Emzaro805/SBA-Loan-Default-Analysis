@@ -87,6 +87,12 @@ This project presents a data-driven solution to help U.S. banks assess the risk 
    - Use this model to enhance the loan approval process and reduce financial losses
 
 
+## Model Diagram
+![image](https://github.com/user-attachments/assets/27de53ce-66e4-4f62-bf30-cabc822651d3)
+
+
+
+
 ## 💻 Tools & Libraries
 
 - **R**: `caret`, `ggplot2`, `dplyr`, `e1071`, `readxl`
